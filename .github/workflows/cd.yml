@@ -1,0 +1,19 @@
+name: Node.js CD
+
+on:
+  push:
+    branches:
+      - "main"
+
+jobs:
+  redeploy_on_push:
+    name: redeploy
+    
+    steps:
+      - name: ssh into server
+      - run: |
+          echo ${{secrets.SSH_KEY}} &> ~/ssh_key
+          ssh -i ssh_key ubuntu@13.50.5.149
+          cd CI-CD-node/ && git pull
+          npm install
+          pm2 restart CI-CD-node
