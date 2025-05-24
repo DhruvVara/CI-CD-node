@@ -23,7 +23,7 @@ jobs:
       run: npm install
 
     - name: 🚀 Start server (test it boots)
-        run: |
-          node index.js &
-          sleep 3
-          curl -I http://localhost:3000 || echo "Server didn't respond"
+      run: |
+        node index.js &
+        sleep 3
+        curl -I http://localhost:3000 || echo "Server didn't respond"
