@@ -20,8 +20,9 @@ jobs:
 
           ssh-keyscan 13.50.5.149 >> ~/.ssh/known_hosts
 
-          ssh -i ~/ssh_key ubuntu@13.50.5.149
+          ssh -i ~/ssh_key ubuntu@13.50.5.149 << 'EOF'
 
-          cd CI-CD-node/ && git pull
-          npm install
-          pm2 restart CI-CD-node
+            cd CI-CD-node/ && git pull
+            npm install
+            pm2 restart CI-CD-node
+          EOF
