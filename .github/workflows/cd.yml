@@ -20,9 +20,9 @@ jobs:
 
       - name: SSH and deploy
         run: |
-          ssh -i ssh_key ubuntu@13.50.5.149 << 'EOF'
-            cd CI-CD-node/
-            git pull
-            npm install
+          ssh -o StrictHostKeyChecking=no -i ssh_key ubuntu@13.50.5.149 '
+            cd CI-CD-node &&
+            git pull &&
+            npm install &&
             pm2 restart CI-CD-node
-          EOF
+          '
