@@ -1,0 +1,29 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+  steps:
+    - name: 📥 Checkout code
+      uses: actions/checkout@v3
+  
+    - name: 🟢 Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: 20
+    
+    - name: install dependencies
+      run: npm install
+
+    - name: 🚀 Start server (test it boots)
+        run: |
+          node index.js &
+          sleep 3
+          curl -I http://localhost:3000 || echo "Server didn't respond"
