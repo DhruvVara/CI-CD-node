@@ -11,7 +11,7 @@ jobs:
     
     steps:
       - name: ssh into server
-      - run: |
+        run: |
           echo ${{secrets.SSH_KEY}} &> ~/ssh_key
           ssh -i ssh_key ubuntu@13.50.5.149
           cd CI-CD-node/ && git pull
