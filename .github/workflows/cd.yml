@@ -26,4 +26,4 @@ jobs:
 
       - name: SSH and Deploy
         run: |
-          ssh -i ~/.ssh/id_rsa ubuntu@13.50.5.149 "cd CI-CD-node && git pull && npm install && pm2 restart CI-CD-node"
+          ssh -i ~/.ssh/id_rsa ubuntu@13.50.5.149 "cd CI-CD-node && git pull && export PATH=/home/ubuntu/.nvm/versions/node/v20.11.1/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin && npm install && pm2 restart CI-CD-node"
